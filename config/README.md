@@ -7,6 +7,7 @@
 - [Configuration for pymatgen](#Configuration-for-pymatgen)
 - [Configure all with one command](#Configure-all-with-one-command)
 - [Example](#Example)
+- [Validation for configuration](#Validation-for-configuration)
 - [Help for `dfttk config` command](#Help-for-dfttk-config-command)
 
 ---
@@ -98,7 +99,7 @@ current_folder
 - `dfttk config -mp`
 
   ```shell
-  usage: dfttk config [-mp] [-p PATH_TO_STORE_CONFIG] [-psp VASP_PSP_DIR] [-mapi MAPI_KEY] 
+  usage: dfttk config -mp [-p PATH_TO_STORE_CONFIG] [-psp VASP_PSP_DIR] [-mapi MAPI_KEY] 
                       [-df DEFAULT_FUNCTIONAL]
   ```
 
@@ -169,6 +170,22 @@ PMG_VASP_PSP_DIR: /gpfs/scratch/mjl6505/test/dfttk/tutorial/config/test_config/v
 
 ---
 
+## Validation for configuration
+
+- `dfttk config -t`
+
+  This command will validate the configuration, and give some error or tips for the incorrect configuration
+
+  ```shell
+  dfttk config -t [{all,pymatgen,atomate,none}]
+  ```
+
+  - Currently only support validation for the configuration of pymatgen
+
+[TO TOP](#Content)
+
+---
+
 ## Help for `dfttk config` command
 
 ```shell
@@ -176,13 +193,15 @@ dfttk config -h
 ```
 
 ```shell
-DFTTK version: 0.1+98.ge7aa39c.dirty
+DFTTK version: 0.1+99.ga2da70f.dirty
 Copyright © Phases Research Lab (https://www.phaseslab.com/)
 
 usage: dfttk config [-h] [-all] [-p PATH_TO_STORE_CONFIG] [-a]
                     [-c CONFIG_FOLDER] [-q QUEUE_SCRIPT] [-qt QUEUE_TYPE]
                     [-v VASP_CMD_FLAG] [-mp] [-psp VASP_PSP_DIR]
-                    [-mapi MAPI_KEY] [-df DEFAULT_FUNCTIONAL]
+                    [-mapi MAPI_KEY]
+                    [-df {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}]
+                    [-t [{all,pymatgen,atomate,none}]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -209,7 +228,10 @@ optional arguments:
                         The path of pseudopotentials. Default: psp
   -mapi MAPI_KEY, --mapi_key MAPI_KEY
                         The API key of Materials Projects
-  -df DEFAULT_FUNCTIONAL, --default_functional DEFAULT_FUNCTIONAL
+  -df {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}, --default_functional {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}
                         The default functional. Default: PBE
+  -t [{all,pymatgen,atomate,none}], --test_config [{all,pymatgen,atomate,none}]
+                        Test for configurations. Note: currently only support
+                        for pymatgen.
 ```
 
