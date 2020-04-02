@@ -32,6 +32,7 @@ get_started
 └── test_folder
     ├── Fe3Ni.cif
     ├── Fe3Ni-settings.yaml
+    ├── Fe3Ni-SET.yam
     ├── POSCAR
     ├── POSCAR-2
     ├── SETTINGS-POSCAR.yaml
