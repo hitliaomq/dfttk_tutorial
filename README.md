@@ -17,11 +17,31 @@
   python --version
   ```
 
-  If it is python 2.x, please update the python to 3.6+
+  If it is python 2.x, please update the python to python 3.6+
 
   **PRL Group Notes:** For **ACI** account, please you just need to load the correct python by `module load python`
 
 - Using [virtualenv](https://github.com/pypa/virtualenv)
+
+  ```html
+  <details>
+      <summary>Create virtual environment by virtualenv</summary>
+      ```bash
+      #virtualenv --python=PYTHON_VERSION ENV_NAME
+  	virtualenv --python=python3.6 dfttk
+  	#Activate
+  	source dfttk/bin/activate
+  	#Deactivate
+  	deactivate
+      ```
+  </details>
+  ```
+
+  
+
+  
+
+  
 
   ```shell
   #virtualenv --python=PYTHON_VERSION ENV_NAME
