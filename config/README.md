@@ -3,9 +3,10 @@
 ## Content
 
 - [Preparation](#Preparation)
-- [Configuration for atomate](#Configuration-for-atomate)
-- [Configuration for pymatgen](#Configuration-for-pymatgen)
 - [Configure all with one command](#Configure-all-with-one-command)
+- [Configure separately](#Configure-separately)
+  - [Configuration for atomate](#Configuration-for-atomate)
+  - [Configuration for pymatgen](#Configuration-for-pymatgen)
 - [Example](#Example)
 - [Validation for configuration](#Validation-for-configuration)
 - [Help for `dfttk config` command](#Help-for-dfttk-config-command)
@@ -16,7 +17,7 @@
 
 For configure dfttk, the following file you need to prepare.
 
-```
+```bash
 current_folder
 ├── psp                          [specified by -psp]
 │   ├── pseudopotential_content  [required if you didnot configurate pymatgen]
@@ -30,18 +31,47 @@ current_folder
 └── vaspjob.pbs                  [optional, specified by -q parameter]
 ```
 
-- **pseudopotential_content:** The vasp pseudopotential.
+After prepared the above **required** file, simply run `dfttk config -all` to finish the configuration. If such command successes, you can skip **all** of the reset part of this documents. If not, please reading the following parts.
 
-  - It can be compressed file (`*.tar.gz`) or uncompressed folder. The name should be in the following list. e.g `potpaw_PBE.tar.gz` (compressed file)
+- pseudopotential_content:** The vasp pseudopotential.
 
-    ```python
-    ["potpaw_PBE", "POT_GGA_PAW_PBE", "potpaw_PBE_52", "POT_GGA_PAW_PBE_52", "potpaw_PBE_54", "POT_GGA_PAW_PBE_54", "potpaw_PBE.52", "POT_GGA_PAW_PBE_52", "potpaw_PBE.54", "POT_GGA_PAW_PBE_54", "potpaw_LDA", "POT_LDA_PAW", "potpaw_LDA.52", "POT_LDA_PAW_52", "potpaw_LDA.54", "POT_LDA_PAW_54", "potpaw_LDA_52", "POT_LDA_PAW_52", "potpaw_LDA_54", "POT_LDA_PAW_54", "potUSPP_LDA", "POT_LDA_US", "potpaw_GGA", "POT_GGA_PAW_PW91", "potUSPP_GGA": "POT_GGA_US_PW91"]
+  - **PRL Group Notes:** For PRL group, if you use ACI at PSU, you can skip this part,  using `-aci` parameter
+
+  - It can be compressed file (`*.tar.gz`) or uncompressed folder. The name is handled as follows:
+
+    ```mermaid
+    graph TB
+    A[Pseudopotention Name] -->B(Split the name)
+        B --> C{Contain LDA?}
+        C -->|Yes| D{Contain 52?} --> |Yes| F[LDA_52]
+        C -->|No| E{Contain PBE?} --> |Yes| G{Contain 52?} --> |Yes| H[PBE_52]
+        D -->|No| I{Contain 54} --> |Yes| J[LDA_54]
+        E -->|No| K{Contain GGA?} --> |Yes| L{Contain US?} --> M[GGA_US]
+        G -->|No| N{Contain 54?} --> |Yes| O[PBE_54]
+        I -->|No| P{Contain US?} --> |Yes| Q[LDA_US]
+        K -->|No| R[ERROR]
+        L -->|No| S[PW91]
+        N -->|No| T[PBE]
+        P -->|No| U[LDA]
     ```
 
-    The file structure should be as follows:
+    **Note:** **1.**  The split can recognize`.`,`-`,`_`,`+`,`=`,`*` and `space` ,.
 
-    ```shell
-    e.g. psp
+    ​    **2.**  After split, the name will be a list. The condition e.g `contain 52` is the elements' level. It means `52` should be a elements of the list. But `US` is string level, which means `US` only need be a sub-string of the elements of the list. 
+
+    ​    **3.** For compressed file, it support `*.tar.gz` and `*.tar`
+
+    ​	e.g. `potpaw_PBE`, `PBE.tar.gz` and `potpaw_PBE_5254` will be recognized as `PBE`.
+
+    ​		    `potpaw_PBE.52` and `potpaw_PBE_52` will be recognized as `PBE_52`
+
+    ​		    `potUSPP_LDA` and `POT_LDA_US` will be recognized as `LDA_US`
+
+    After prepare, the file structure should look like as follows:
+
+    <details>
+        <summary>Click for details</summary>
+        <pre><code>e.g. psp
          ├── potpaw_LDA.54.tar.gz
          ├── potpaw_PBE.54.tar.gz
          └── ...
@@ -52,8 +82,8 @@ current_folder
          ├── potpaw_PBE_54
          │   ├── Ac
          │   └── ...
-         └── ...
-    ```
+         └── ...</code></pre>
+    </details>
 
     The original pseudopotential file, please ask those who are in charge of vasp in your group.
 
@@ -69,13 +99,32 @@ current_folder
 
   - For **db.json** and **my_launchpad.yaml** file, please ask **Brandon** for help.
   - **vaspjob.pbs** for ACI can be download from github
-  - If you have the pseudopotential, please download it from group's box(Group Documents/VASP_potential).
+  - For **pseudopotential**, two choices: 1. using the pseudopotentials in ACI account (Using `-aci` parameter). 2. Download the pseudopotential from group's box(`Group Documents/VASP_potential` note: only `PBE_54` and `LDA_54`).
 
 [TO TOP](#Content)
 
 ---
 
-## Configuration for atomate
+## Configure all with one command
+
+- `dfttk config -all`
+
+  ```shell
+  usage: dfttk config [-h] [-all] [-p PATH_TO_STORE_CONFIG] [-a]
+                      [-c CONFIG_FOLDER] [-q QUEUE_SCRIPT] [-qt QUEUE_TYPE]
+                      [-v VASP_CMD_FLAG] [-mp] [-aci] [-psp VASP_PSP_DIR]
+                      [-mapi MAPI_KEY] [-df DEFAULT_FUNCTIONAL]
+  ```
+
+  The meaning of the parameters, please ref [Help for `dfttk config` command](#Help-for-dfttk-config-command) or just run `dfttk config -h`
+
+[TO TOP](#Content)
+
+---
+
+## Configure separately
+
+### Configuration for atomate
 
 - Config manual, ref [Configure database connections and computing center parameters](https://atomate.org/installation.html#configure-fireworks)
 
@@ -92,32 +141,15 @@ current_folder
 
 ---
 
-## Configuration for pymatgen
+### Configuration for pymatgen
 
 - Config manual, ref [POTCAR setup in pymatgen](https://pymatgen.org/installation.html#potcar-setup)
 
 - `dfttk config -mp`
 
   ```shell
-  usage: dfttk config -mp [-p PATH_TO_STORE_CONFIG] [-psp VASP_PSP_DIR] [-mapi MAPI_KEY] 
+  usage: dfttk config -mp [-aci] [-p PATH_TO_STORE_CONFIG] [-psp VASP_PSP_DIR] [-mapi MAPI_KEY] 
                       [-df DEFAULT_FUNCTIONAL]
-  ```
-
-  The meaning of the parameters, please ref [Help for `dfttk config` command](#Help-for-dfttk-config-command) or just run `dfttk config -h`
-
-[TO TOP](#Content)
-
----
-
-## Configure all with one command
-
-- `dfttk config -all`
-
-  ```shell
-  usage: dfttk config [-h] [-all] [-p PATH_TO_STORE_CONFIG] [-a]
-                      [-c CONFIG_FOLDER] [-q QUEUE_SCRIPT] [-qt QUEUE_TYPE]
-                      [-v VASP_CMD_FLAG] [-mp] [-psp VASP_PSP_DIR]
-                      [-mapi MAPI_KEY] [-df DEFAULT_FUNCTIONAL]
   ```
 
   The meaning of the parameters, please ref [Help for `dfttk config` command](#Help-for-dfttk-config-command) or just run `dfttk config -h`
