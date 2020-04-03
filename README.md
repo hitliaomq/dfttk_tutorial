@@ -23,26 +23,9 @@
 
 - Using [virtualenv](https://github.com/pypa/virtualenv)
 
-  ```html
   <details>
-      <summary>Create virtual environment by virtualenv</summary>
-      ```bash
-      #virtualenv --python=PYTHON_VERSION ENV_NAME
-  	virtualenv --python=python3.6 dfttk
-  	#Activate
-  	source dfttk/bin/activate
-  	#Deactivate
-  	deactivate
-      ```
-  </details>
-  ```
-
-  
-
-  
-
-  
-
+  <summary>Create Virtual Env By virtualenv</summary>
+  <pre><code>
   ```shell
   #virtualenv --python=PYTHON_VERSION ENV_NAME
   virtualenv --python=python3.6 dfttk
@@ -51,16 +34,23 @@
   #Deactivate
   deactivate
   ```
+  </code></pre>
+  </details>
 
 - Using [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-  ```shell
+  <details>
+  <summary>Create Virtual Env Using conda</summary>
+  <pre><code>
   #conda create -n ENV_NAME python=VERSION
   conda create -n dfttk python=3.6
   #Activate
   conda activate dfttk
   #Deactivate
-  conda deactivate
-  ```
-
+conda deactivate
+  </code></pre>
+  </details>
+  
+  
+  
   
