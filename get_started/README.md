@@ -170,7 +170,7 @@ dfttk run -f STRUCTURE/STRUCTURE_FOLDER
 
 ## Run dfttk with python script
 
-
+Ref [recips](https://github.com/PhasesResearchLab/dfttk/blob/master/docs/recipes.rst)
 
 
 
