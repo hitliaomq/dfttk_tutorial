@@ -4,8 +4,8 @@
 ## Content
 
 - [Installation](#Installation)
-- [Configuration for DFTTK](https://github.com/hitliaomq/dfttk_tutorial/blob/master/config)
-- [Get Started](https://github.com/hitliaomq/dfttk_tutorial/tree/master/get_started)
+- [Configuration for DFTTK](./config/Configuration.md)
+- [Get Started](./get_started/Get_started.md)
 
 ## Installation
 
