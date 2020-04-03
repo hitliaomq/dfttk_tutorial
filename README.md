@@ -25,31 +25,25 @@
 
   <details>
   <summary>Create Virtual Env By virtualenv</summary>
-  <pre><code>
-  ```shell
-  #virtualenv --python=PYTHON_VERSION ENV_NAME
+  <pre><code>#virtualenv --python=PYTHON_VERSION ENV_NAME
   virtualenv --python=python3.6 dfttk
   #Activate
   source dfttk/bin/activate
   #Deactivate
-  deactivate
-  ```
-  </code></pre>
+  deactivate</code></pre>
   </details>
 
 - Using [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
   <details>
   <summary>Create Virtual Env Using conda</summary>
-  <pre><code>
-  #conda create -n ENV_NAME python=VERSION
+  <pre><code>#conda create -n ENV_NAME python=VERSION
   conda create -n dfttk python=3.6
   #Activate
   conda activate dfttk
   #Deactivate
-conda deactivate
-  </code></pre>
-  </details>
+  conda deactivate</code></pre>
+</details>
   
   
   
