@@ -39,6 +39,57 @@ After prepared the above **required** file, simply run `dfttk config -all` to fi
 
   - It can be compressed file (`*.tar.gz`) or uncompressed folder. The name is handled as follows:
 
+    ```flow
+    st=>start: pseudopotentials name
+    op_split=>operation: Split the name (., -, _, +, =, * and space)
+    cond_lda=>condition: Contain LDA ?
+    cond_pbe=>condition: Contain PBE ?
+    cond_lda_52=>condition: Contain 52 ?
+    cond_lda_54=>condition: Contain 54 ?
+    cond_lda_us=>condition: Contain US ?
+    cond_pbe_52=>condition: Contain 52 ?
+    cond_pbe_54=>condition: Contain 54 ?
+    cond_gga=>condition: Contain GGA ?
+    cond_us=>condition: Contain US ?
+    lda_us=>operation: LDA_US
+    lda_paw=>operation: LDA_PAW
+    lda52=>operation: LDA_52
+    lda54=>operation: LDA_54
+    pbe=>operation: PBE
+    pbe52=>operation: PBE_52
+    pbe54=>operation: PBE_54
+    pw91=>operation: PW91
+    gga_us=>operation: GGA_US
+    op_err=>operation: Not parsed name.
+    e=>end
+    
+    st->op_split->cond_lda
+    cond_lda(yes)->cond_lda_52
+    cond_lda(no)->cond_pbe
+    cond_lda_52(yes)->lda52
+    cond_lda_52(no)->cond_lda_54
+    cond_lda_54(yes)->lda54
+    cond_lda_54(no)->cond_lda_us
+    cond_lda_us(yes)->lda_us
+    cond_lda_us(no)->lda_paw
+    cond_pbe(yes)->cond_pbe_52
+    cond_pbe(no)->cond_gga
+    cond_pbe_52(no)->cond_pbe_54
+    cond_pbe_52(yes)->pbe52
+    cond_pbe_54(yes)->pbe54
+    cond_pbe_54(no)->pbe
+    cond_gga(yes)->cond_us
+    cond_gga(no)->op_err
+    cond_us(yes)->gga_us
+    cond_us(no)->pw91
+    ```
+
+    
+
+    
+
+    
+
     ```mermaid
     graph TB
     A[Pseudopotention Name] -->B(Split the name)
@@ -225,15 +276,15 @@ dfttk config -h
 ```
 
 ```shell
-DFTTK version: 0.1+99.ga2da70f.dirty
+DFTTK version: 0.1+121.g8fddda3.dirty
 Copyright © Phases Research Lab (https://www.phaseslab.com/)
 
 usage: dfttk config [-h] [-all] [-p PATH_TO_STORE_CONFIG] [-a]
                     [-c CONFIG_FOLDER] [-q QUEUE_SCRIPT] [-qt QUEUE_TYPE]
-                    [-v VASP_CMD_FLAG] [-mp] [-psp VASP_PSP_DIR]
+                    [-v VASP_CMD_FLAG] [-mp] [-aci] [-psp VASP_PSP_DIR]
                     [-mapi MAPI_KEY]
                     [-df {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}]
-                    [-t [{all,pymatgen,atomate,none}]]
+                    [-t [{all,pymatgen,atomate}]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -256,13 +307,14 @@ optional arguments:
                         The flag to distinguish vasp_cmd to othe commands in
                         queue_script. Default: vasp_std
   -mp, --pymatgen       Configure pymatgen.
+  -aci, --aci           Using the pesudopotential on the ACI cluster at PSU.
   -psp VASP_PSP_DIR, --vasp_psp_dir VASP_PSP_DIR
                         The path of pseudopotentials. Default: psp
   -mapi MAPI_KEY, --mapi_key MAPI_KEY
                         The API key of Materials Projects
   -df {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}, --default_functional {LDA,LDA_52,LDA_54,LDA_US,PBE,PBE_52,PBE_54,PW91,PW91_US,Perdew-Zunger81}
                         The default functional. Default: PBE
-  -t [{all,pymatgen,atomate,none}], --test_config [{all,pymatgen,atomate,none}]
+  -t [{all,pymatgen,atomate}], --test_config [{all,pymatgen,atomate}]
                         Test for configurations. Note: currently only support
                         for pymatgen.
 ```
