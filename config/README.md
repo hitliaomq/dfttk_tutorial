@@ -106,7 +106,7 @@ After prepared the above **required** file, simply run `dfttk config -all` to fi
         P -->|No| U[LDA]
     ```
 
-    **Note:** **1.**  The split can recognize`.`,`-`,`_`,`+`,`=`,`*` and `space` ,.
+    **Note:** **1.**  The split can recognize`.`,`-`,`_`,`+`,`=`,`*` and `space` .
 
     ​    **2.**  After split, the name will be a list. The condition e.g `contain 52` is the elements' level. It means `52` should be a elements of the list. But `US` is string level, which means `US` only need be a sub-string of the elements of the list. 
 
