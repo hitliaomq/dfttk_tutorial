@@ -3,9 +3,9 @@
 
 ## Content
 
-- [Installation](#Installation)
-- [Configuration for DFTTK](./config/Configuration.md)
-- [Get Started](./get_started/Get_started.md)
+- [Installation](./1-Installation/Installation)
+- [Configuration for DFTTK](./2-Configuration/Configuration.md)
+- [Get Started](./3-Get_started/Get_started.md)
 
 ## Installation
 

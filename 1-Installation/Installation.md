@@ -1,25 +1,21 @@
 # Installation of DFTTK
 
----
-
 ## Content
 
-- [1. Create a Virtual Environment (Optional)](#1.-Create-a-Virtual-Environment-(Optional))
-  - [a. Using Anaconda or Miniconda](#a.-Using-Anaconda-or-Miniconda)
-  - [b. Using virtualenv](#b.-Using-virtualenv)
-- [2. Install DFTTK](#2.-Install-DFTTK)
-  - [a. pip](#a.-pip)
-  - [b. develop version](#b.-develop-version)
-  - [c. No virtual environment](#c.No-virtual-environment)
-- [3. Notice](#3.-Notice)
+- [1. Create a Virtual Environment (Optional)](#Create-a-Virtual-Environment-(Optional))
+  - [a. Using Anaconda or Miniconda](#Using-Anaconda-or-Miniconda)
+  - [b. Using virtualenv](#Using-virtualenv)
+- [2. Install DFTTK](#Install-DFTTK)
+  - [a. pip](#pip)
+  - [b. develop version](#develop-version)
+  - [c. No virtual environment](#No-virtual-environment)
+- [3. Notice](#Notice)
 
----
-
-## 1. Create a Virtual Environment (Optional)
+## Create a Virtual Environment (Optional)
 
 **Note: python version requirements: 3.6+ ([Atomate requirements](https://atomate.org/installation.html#create-a-python-3-virtual-environment))**
 
-### a. Using [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+### Using [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
 (1)  Using the anaconda on ACI 
 
@@ -38,9 +34,11 @@ source activate dfttk
 #2.3 Deactivate 
 source deactivate 
 
-#3. If you want to load the environment auto, please add the following sentence into ~/.basrc
+#3.1 If you want to load the environment auto, please add the following sentence into ~/.basrc
 module load python
 source activate dfttk
+#3.2 Update ~/.bashrc
+source ~/.bashrc
 
 #4. After installed dfttk, total space is 782Mb
 ```
@@ -66,7 +64,9 @@ conda activate dfttk
 #2.3 Deactivate 
 conda deactivate 
 
-#3. It will add the environment variables in ~/.basrc, if you don't want the auto load, please delete/comment the following lines (There are some difference with yours, different usernames: mjl6505)
+#3.1 Update ~/.bashrc
+source ~/.bashrc
+#3.2 It will add the environment variables in ~/.basrc, if you don't want the auto load, please delete/comment the following lines (There are some difference with yours, different usernames: mjl6505)
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/storage/home/mjl6505/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -87,7 +87,7 @@ unset __conda_setup
 
 [To Top](#Content)
 
-### b. Using [virtualenv](https://github.com/pypa/virtualenv)
+### Using [virtualenv](https://github.com/pypa/virtualenv)
 
 ```bash
 #Here, we assumpt that all operations is in you home dir
@@ -105,21 +105,21 @@ source dfttk/bin/activate
 #2.3 Deactivate 
 deactivate 
 
-#3. If you want to load the environment auto, please add the following sentence into ~/.basrc
+#3.1 If you want to load the environment auto, please add the following sentence into ~/.basrc
 source $HOME/dfttk/bin/activate
+#3.2 Update ~/.bashrc
+source ~/.bashrc
 
 #4. After installed dfttk, total space is 458Mb
 ```
 
 [To Top](#Content)
 
----
-
-## 2. Install DFTTK
+## Install DFTTK
 
 Firstly, load your virtual environment (as described in above Section)
 
-###  a. pip
+###  pip
 
 ```bash
 pip install dfttk
@@ -127,7 +127,7 @@ pip install dfttk
 
 **Note**: currently, only **version<=0.2.1** is supported by pip, the new version will be updated after more tests and release.
 
-### b. develop version
+### develop version
 
 ```bash
 #1. Download dfttk code
@@ -139,13 +139,15 @@ pip install -e .
 
 **Note**: Currently, there is some bugs in the development version in the group's branch, if you want to install it now, please download my branch of dfttk. (https://github.com/hitliaomq/dfttk)
 
-### c. No virtual environment
+### No virtual environment
 
 ```bash
 #1. Load python
 module load python
 #2. Install dfttk
 pip install --user dfttk
+#3. After install, add following lines in your ~/.bashrc
+export $PATH=$HOME/.local/bin:$PATH
 
 #3. Note. In ACI, if the following error occured, 
  RuntimeError: Running cythonize failed!
@@ -155,9 +157,7 @@ pip install --user dfttk
 
 [To Top](#Content)
 
----
-
-## 3. Notice
+## Notice
 
 **Note: ACI will update linux version(from RedHat 6 to RedHat 7) recently (Sep. 14), and after the update, maybe there will exist some difference.**
 
