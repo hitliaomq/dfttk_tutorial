@@ -3,48 +3,54 @@
 
 ## Content
 
-- [Installation](./1-Installation/Installation.md)
+- [The simplest way to install dfttk](#The-simplest-way-to-install-dfttk)
+  - [Installation](#Installation)
+  - [Trouble Shooting](#Trouble-Shooting)
+- [Installation of dfttk](./1-Installation/Installation.md)
 - [Configuration for DFTTK](./2-Configuration/Configuration.md)
 - [Get Started](./3-Get_started/Get_started.md)
 
-## Installation
 
-### Create a virtual environment (Optional)
 
-- Check the [python](https://www.python.org/) version
+## The simplest way to install dfttk
 
-  ```shell
-  python --version
-  ```
+### Installation
 
-  If it is python 2.x, please update the python to python 3.6+
+```bash
+#Take ACI as an example
+#1. Install dfttk
+module load python
+pip install --user dfttk
 
-  **PRL Group Notes:** For **ACI** account, please you just need to load the correct python by `module load python`
+#2. Add the following lines to ~/.bashrc
+export $PATH=$HOME/.local/bin:$PATH
 
-- Using [virtualenv](https://github.com/pypa/virtualenv)
+#3. Update ~/.bashrc
+source ~/.bashrc
 
-  <details>
-  <summary>Create Virtual Env By virtualenv</summary>
-  <pre><code>#virtualenv --python=PYTHON_VERSION ENV_NAME
-  virtualenv --python=python3.6 dfttk
-  #Activate
-  source dfttk/bin/activate
-  #Deactivate
-  deactivate</code></pre>
-  </details>
+#4. Configuration of dfttk 
+# (Prepare db.json and my_launchpad.yaml [do not put them in scratch folder]
+#  Run the following command at the location)
+dfttk config -all -aci
+```
 
-- Using [Anaconda](https://www.anaconda.com/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+### Trouble shooting
 
-  <details>
-  <summary>Create Virtual Env Using conda</summary>
-  <pre><code>#conda create -n ENV_NAME python=VERSION
-  conda create -n dfttk python=3.6
-  #Activate
-  conda activate dfttk
-  #Deactivate
-  conda deactivate</code></pre>
-</details>
-  
-  
-  
-  
+1. If the code can't find vasp, please load vasp previously or provide `vaspjob.pbs`
+
+   ```bash
+   #For ACI
+   module load intel
+   module load impi
+   module load vasp
+   ```
+
+2. Please ensure that the version of automate>0.9.4.
+
+For details, please ref. the following sections
+
+## [Installation of dfttk](./1-Installation/Installation.md)
+
+## [Configuration for dfttk](./2-Configuration/Configuration.md)
+
+## [Get Started](./3-Get_started/Get_started.md)

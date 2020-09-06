@@ -144,10 +144,13 @@ pip install -e .
 ```bash
 #1. Load python
 module load python
-#2. Install dfttk
+#2. Install dfttk (use pip or install develop version)
 pip install --user dfttk
 #3. After install, add following lines in your ~/.bashrc
+module load python
 export $PATH=$HOME/.local/bin:$PATH
+#Then update the ~/.bashrc
+source ~/.bashrc
 
 #3. Note. In ACI, if the following error occured, 
  RuntimeError: Running cythonize failed!
