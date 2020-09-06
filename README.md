@@ -3,7 +3,7 @@
 
 ## Content
 
-- [Installation](./1-Installation/Installation)
+- [Installation](./1-Installation/Installation.md)
 - [Configuration for DFTTK](./2-Configuration/Configuration.md)
 - [Get Started](./3-Get_started/Get_started.md)
 
