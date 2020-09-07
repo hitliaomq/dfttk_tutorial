@@ -81,8 +81,7 @@ structure = Structure.from_file(TEMPLATE_STRUCTURE_FILENAME)
 if magmom:
     structure.add_site_property('magmom', magmom)
 
-if not db_file:
-    
+if not db_file:    
     db_file = loadfn(config_to_dict()["FWORKER_LOC"])["env"]["db_file"]
 
 wf = get_wf_gibbs_robust(structure, num_deformations=num_deformations, deformation_fraction=deformation_fraction,
