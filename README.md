@@ -6,9 +6,9 @@
 - [The simplest way to install dfttk](#The-simplest-way-to-install-dfttk)
   - [Installation](#Installation)
   - [Trouble Shooting](#Trouble-Shooting)
-- [Installation of dfttk](./1-Installation/README.md)
-- [Configuration for DFTTK](./2-Configuration/README.md)
-- [Get Started](./3-Get_started/README.md)
+- [Installation of dfttk](./1-Installation)
+- [Configuration for DFTTK](./2-Configuration/)
+- [Get Started](./3-Get_started)
 
 
 
@@ -63,8 +63,8 @@ dfttk config -all -aci
 
 For details, please ref. the following sections
 
-## [Installation of dfttk](./1-Installation/README.md)
+## [Installation of dfttk](./1-Installation)
 
-## [Configuration for dfttk](./2-Configuration/README.md)
+## [Configuration for dfttk](./2-Configuration/)
 
-## [Get Started](./3-Get_started/README.md)
+## [Get Started](./3-Get_started/)
