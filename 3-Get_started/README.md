@@ -2,8 +2,8 @@
 
 ## Content
 
-- [Run dfttk for a single structure or a single folder](./1-Single_Structure/README.md)
-- [Run dfttk for multi structures](./2-Multi_Structures/README.md)
+- [Run dfttk for a single structure or a single folder](./1-Single_Structure/)
+- [Run dfttk for multi structures](./2-Multi_Structures/)
 - [Run dfttk with different settings](./3-Run_With_Settings/README.md)
 - [Run dfttk with phonon](./4-Run_With_Phonon/README.md)
 - [Run different workflow](./5-Different_Workflow/README.md)
