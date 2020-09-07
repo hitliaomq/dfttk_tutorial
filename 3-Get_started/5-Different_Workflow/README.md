@@ -24,4 +24,4 @@ This command will allow you to run born charge workflow
 dfttk run -wf born -o
 ```
 
-[Return](../README.md)
+[Return](../)

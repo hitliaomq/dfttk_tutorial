@@ -49,4 +49,4 @@ This command will write out the workflow of all of the supported structures (inc
   - For **pymatgen's structure**, the name shold be **\*.json** or **\*.yaml**
   - For **atat's structure**, the name should be **\*rndstr.in\*** or **\*lat.in\*** or **\*bestsqs\***
 
-[Return](../README.md)
+[Return](../)

@@ -2,13 +2,13 @@
 
 ## Content
 
-- [Run dfttk for a single structure or a single folder](./1-Single_Structure/)
-- [Run dfttk for multi structures](./2-Multi_Structures/)
-- [Run dfttk with different settings](./3-Run_With_Settings/README.md)
-- [Run dfttk with phonon](./4-Run_With_Phonon/README.md)
-- [Run different workflow](./5-Different_Workflow/README.md)
-- [Write out workflow](./6-Wirte_Out_Workflow/README.md)
-- [Launch to launchpad and submit to queue](./7-Launch_and_Submit/README.md)
+- [1. Run dfttk for a single structure or a single folder](./1-Single_Structure/)
+- [2. Run dfttk for multi structures](./2-Multi_Structures/)
+- [3. Run dfttk with different settings](./3-Run_With_Settings)
+- [4. Run dfttk with phonon](./4-Run_With_Phonon)
+- [5. Run different workflow](./5-Different_Workflow)
+- [6. Write out workflow](./6-Wirte_Out_Workflow)
+- [7. Launch to launchpad and submit to queue](./7-Launch_and_Submit)
 - [Help for `dfttk run` command](#Help-for-dfttk-run-command)
 
 ## Help for `dfttk run` command

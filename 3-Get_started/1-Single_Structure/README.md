@@ -28,5 +28,5 @@ dfttk run -f POSCAR.Si -o
 dfttk run -o
 ```
 
-[Return](../README.md)
+[Return](../)
 

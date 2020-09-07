@@ -47,4 +47,4 @@ dfttk run -r -l -m 2
 
 This will submit all structures to launchpad and queue
 
-[Return](../README.md)
+[Return](..)

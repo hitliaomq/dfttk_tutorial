@@ -35,4 +35,4 @@ optional arguments:
 
   It will write out the work flow as `./test_folder/dfttk_wf-POSCAR.yaml`
 
-[Return](../README.md)
+[Return](../)
