@@ -6,9 +6,9 @@
 - [The simplest way to install dfttk](#The-simplest-way-to-install-dfttk)
   - [Installation](#Installation)
   - [Trouble Shooting](#Trouble-Shooting)
-- [Installation of dfttk](./1-Installation/Installation.md)
-- [Configuration for DFTTK](./2-Configuration/Configuration.md)
-- [Get Started](./3-Get_started/Get_started.md)
+- [Installation of dfttk](./1-Installation/README.md)
+- [Configuration for DFTTK](./2-Configuration/README.md)
+- [Get Started](./3-Get_started/README.md)
 
 
 
@@ -23,7 +23,7 @@ module load python
 pip install --user dfttk
 
 #2. Add the following lines to ~/.bashrc
-export $PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 #3. Update ~/.bashrc
 source ~/.bashrc
@@ -47,10 +47,24 @@ dfttk config -all -aci
 
 2. Please ensure that the version of automate>0.9.4.
 
+3. In ACI, if the following error occured, 
+
+   ```bash
+   RuntimeError: Running cythonize failed!
+   ```
+
+   Please update cython by following command
+
+   ```bash
+   pip install --user --upgrade cython
+   ```
+
+   
+
 For details, please ref. the following sections
 
-## [Installation of dfttk](./1-Installation/Installation.md)
+## [Installation of dfttk](./1-Installation/README.md)
 
-## [Configuration for dfttk](./2-Configuration/Configuration.md)
+## [Configuration for dfttk](./2-Configuration/README.md)
 
-## [Get Started](./3-Get_started/Get_started.md)
+## [Get Started](./3-Get_started/README.md)

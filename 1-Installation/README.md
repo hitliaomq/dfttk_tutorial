@@ -148,7 +148,7 @@ module load python
 pip install --user dfttk
 #3. After install, add following lines in your ~/.bashrc
 module load python
-export $PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 #Then update the ~/.bashrc
 source ~/.bashrc
 
